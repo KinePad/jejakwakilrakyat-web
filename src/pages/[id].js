@@ -6,7 +6,6 @@ import Footer from '../components/Footer';
 import { officialsData } from '../data/officials';
 import { useRouter } from 'next/router';
 
-// ... (getStaticPaths dan getStaticProps tetap sama) ...
 export async function getStaticPaths() {
   const paths = officialsData.map((official) => ({
     params: { id: official.id.toString() },
@@ -27,7 +26,6 @@ export async function getStaticProps({ params }) {
   };
 }
 
-// Detail Component
 export default function OfficialDetail({ official }) {
     const router = useRouter();
 
@@ -41,9 +39,7 @@ export default function OfficialDetail({ official }) {
                 <title>{official.name} - {official.category}</title>
             </Head>
 
-            {/* 🔥 PERBAIKAN SINTAKSIS: Pindahkan SEMUA style lokal ke sini */}
             <style jsx>{`
-                /* Container Putih di atas Background Hitam */
                 .detail-container {
                     max-width: 900px;
                     width: 100%;
@@ -142,7 +138,6 @@ export default function OfficialDetail({ official }) {
 
             <Footer /> 
             
-            {/* Style Global tetap di bawah */}
             <style jsx global>{`
                 .container {
                     padding-bottom: 0; 
