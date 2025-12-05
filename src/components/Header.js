@@ -10,7 +10,7 @@ const Header = () => {
         /* --- Kontainer Utama Header --- */
         .main-header-design {
           text-align: center;
-          margin: 60px 0 80px 0;
+          margin: 60px 0 30px 0; /* Margin atas dan bawah disesuaikan */
           padding: 20px 0;
           width: 100%;
           max-width: 900px;
@@ -29,17 +29,16 @@ const Header = () => {
 
         /* --- SEMOGA TIDAK LUPA Text --- */
         .main-title {
-          font-size: 8vw; /* Ukuran besar, responsif */
-          line-height: 0.85; /* Jarak baris rapat */
-          font-weight: 900; /* Paling tebal */
+          font-size: 8vw; 
+          line-height: 0.85; 
+          font-weight: 900; 
           color: #1a1a1a;
-          /* Teks shadow tipis untuk memberikan efek 'tebal' yang lebih tegas */
           text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1); 
         }
 
         @media (min-width: 900px) {
           .main-title {
-            font-size: 72px; /* Batasi ukuran di desktop */
+            font-size: 72px; 
           }
         }
         
