@@ -1,126 +1,57 @@
 // src/components/OfficialCard.js
-import React from 'react';
-
-const OfficialCard = ({ official }) => {
-  return (
-    <div className="official-card">
+// ... (kode import dan komponen)
       <style jsx>{`
         /* --- Kontainer Utama (Kartu) --- */
         .official-card {
           /* Border Biru Tua */
           border: 4px solid #003366; 
           padding: 40px 30px;
-          margin-bottom: 40px;
-          background-color: #ffffff; 
-          /* Efek Shadow Hitam */
-          box-shadow: 6px 6px 0px 0px #1a1a1a; 
-          position: relative;
-          width: 380px; 
-          height: 550px; 
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          font-family: 'Roboto Mono', monospace;
-          transition: transform 0.2s;
+          background-color: #ffffff; /* Container Putih */
+          /* Efek Shadow Hitam/Biru */
+          box-shadow: 6px 6px 0px 0px #007bff; /* Shadow Biru Terang */
+          /* ... style lainnya tetap ... */
+          color: #1a1a1a; /* Teks Utama Hitam agar terlihat di background Putih */
         }
 
         .official-card:hover {
-            transform: translateY(-5px); /* Efek hover kecil */
-            box-shadow: 8px 8px 0px 0px #1a1a1a; /* Efek shadow lebih dalam saat hover */
+            transform: translateY(-5px);
+            box-shadow: 8px 8px 0px 0px #007bff;
         }
 
         /* --- Header Top Left: PUBLIC DATA --- */
         .public-data-tag {
-            position: absolute;
-            top: 0;
-            left: 0;
+            /* ... posisi tetap ... */
             background-color: #003366; /* Biru Tua */
             color: white;
-            padding: 5px 10px;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
+            /* ... style lainnya tetap ... */
         }
 
         /* --- Stempel: POLITICIAN DIRECTORY --- */
-        .stamp-container {
-            margin-top: 20px;
-            margin-bottom: 30px;
-            text-align: center;
-        }
         .stamp {
           border: 3px solid #007bff; /* Biru Terang */
           color: #007bff; 
-          padding: 8px 25px;
-          font-weight: bold;
-          display: inline-block;
-          transform: rotate(-3deg); 
-          font-size: 0.9rem;
-          letter-spacing: 2px;
+          /* ... style lainnya tetap ... */
         }
         
         /* --- Garis Pemisah Putus-Putus Tebal --- */
         .divider {
             border: none;
             border-top: 3px dashed #333;
-            width: 100%;
-            margin: 30px 0;
+            /* ... style lainnya tetap ... */
         }
 
         /* --- Teks Utama: JEJAK PEJABAT --- */
         .main-title {
-          font-size: 3.5rem; 
-          font-weight: 900;
-          line-height: 1.1;
-          margin: 0;
-          text-align: center;
+          /* ... style tetap ... */
+          color: #1a1a1a; /* Teks Hitam */
         }
 
-        /* --- Detail Case File --- */
-        .card-details {
-            text-align: center;
-            margin-top: 30px;
-            flex-grow: 1; 
-        }
-        .card-details p {
-            font-size: 0.85rem;
-            margin: 8px 0;
-            letter-spacing: 1px;
-        }
-
-        /* --- Pesan KLIK UNTUK MEMBUKA ARSIP (Menggantikan Tombol) --- */
+        /* --- Pesan KLIK UNTUK MEMBUKA ARSIP --- */
         .open-folder-msg {
             background-color: #007bff; /* Biru Terang */
             color: white;
-            padding: 15px 30px;
-            text-align: center;
-            font-size: 1rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-top: 15px; 
-            /* Catatan: Karena ini di dalam Link, seluruh area ini dapat diklik */
+            /* ... style lainnya tetap ... */
         }
       `}</style>
       
-      <div className="public-data-tag">PUBLIC DATA</div>
-
-      <div className="stamp-container">
-          <div className="stamp">POLITICIAN DIRECTORY</div>
-      </div>
-
-      <hr className="divider" />
-      
-      <h1 className="main-title">JEJAK PEJABAT</h1>
-
-      <div className="card-details">
-        <p>// CASE FILE: #{String(official.id).padStart(3, '0')}</p> 
-        <p>CATEGORY: {official.category.toUpperCase()}</p>
-        <p>STATUS: {official.status.toUpperCase()}</p>
-      </div>
-
-      {/* --- Pesan yang aman diklik (menggantikan tombol) --- */}
-      <p className="open-folder-msg">KLIK UNTUK MEMBUKA ARSIP →</p>
-    </div>
-  );
-};
-
-export default OfficialCard;
+      {/* ... kode elemen HTML tetap ... */}
