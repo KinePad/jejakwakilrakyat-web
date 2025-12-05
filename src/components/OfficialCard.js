@@ -6,17 +6,17 @@ const OfficialCard = ({ official }) => {
     <div className="official-card">
       <style jsx>{`
         .official-card {
-          border: 4px solid #003366; /* Biru Tua */
+          border: 4px solid #003366;
           padding: 40px 30px;
-          background-color: #ffffff; /* Container Putih */
-          box-shadow: 6px 6px 0px 0px #007bff; /* Shadow Biru Terang */
+          background-color: #ffffff; 
+          box-shadow: 6px 6px 0px 0px #007bff; 
           position: relative;
           width: 380px; 
           height: 550px; 
           display: flex;
           flex-direction: column;
           justify-content: space-between;
-          color: #1a1a1a; /* Teks Kartu Hitam */
+          color: #1a1a1a; 
           transition: transform 0.2s;
         }
         .official-card:hover {
@@ -27,7 +27,7 @@ const OfficialCard = ({ official }) => {
             position: absolute;
             top: 0;
             left: 0;
-            background-color: #003366; /* Biru Tua */
+            background-color: #003366; 
             color: white;
             padding: 5px 10px;
             font-size: 0.8rem;
@@ -38,7 +38,7 @@ const OfficialCard = ({ official }) => {
             text-align: center;
         }
         .stamp {
-          border: 3px solid #007bff; /* Biru Terang */
+          border: 3px solid #007bff; 
           color: #007bff; 
           padding: 8px 25px;
           font-weight: bold;
@@ -70,7 +70,7 @@ const OfficialCard = ({ official }) => {
             letter-spacing: 1px;
         }
         .open-folder-msg {
-            background-color: #007bff; /* Biru Terang */
+            background-color: #007bff; 
             color: white;
             padding: 15px 30px;
             text-align: center;
@@ -90,7 +90,7 @@ const OfficialCard = ({ official }) => {
         <p>CATEGORY: {official.category.toUpperCase()}</p>
         <p>STATUS: {official.status.toUpperCase()}</p>
       </div>
-      <p className="open-folder-msg">KLIK UNTUK MEMBUKA ARSIP →</p>
+      <p className="open-folder-msg">OPEN ARCHIVE →</p>
     </div>
   );
 };
