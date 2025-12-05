@@ -8,34 +8,28 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  
-  /* Terapkan font di seluruh body */
   font-family: 'Roboto Mono', monospace; 
-  background-color: #e9e9e9; /* Warna abu-abu terang */
+  background-color: #f0f0f5; /* Warna putih kebiruan sangat muda */
 }
 
-/* 3. Efek Background Dot Grid (Sesuai Desain Anda) */
+/* 3. Efek Background Dot Grid (Warna Biru Tua Transparan) */
 body {
-  background-color: #e9e9e9;
-  /* Membuat pola titik-titik (dot grid) */
-  background-image: radial-gradient(#d3d3d3 1px, transparent 0);
+  background-color: #f0f0f5;
+  background-image: radial-gradient(rgba(0, 50, 100, 0.1) 1px, transparent 0);
   background-size: 20px 20px;
 }
 
-/* 4. Global Link Style (digunakan di index.js) */
-/* Menghilangkan garis bawah pada Link */
+/* 4. Global Link Style */
 a {
     text-decoration: none;
     color: inherit;
     cursor: pointer;
 }
 
-/* 5. Styling untuk elemen yang umum */
+/* 5. Global element reset */
 h1, h2, h3, h4, p {
     margin-top: 0;
 }
-
-/* Pastikan semua elemen inherit box-sizing */
 *, *::before, *::after {
     box-sizing: border-box;
 }
