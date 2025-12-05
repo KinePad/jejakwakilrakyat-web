@@ -1,16 +1,13 @@
 export const officialsData = [
   {
-    // ID wajib (digunakan untuk link)
     id: 1, 
-    // Data yang harus ada
-    name: "Dr. Asep Sutisna, M.M.", 
-    category: "Legislative", 
+    name: "Setya Novanto", 
+    category: "Skandal e-KTP", 
     
-    // Data Detail Wajib (Pastikan key ini ADA, meskipun valuenya kosong)
-    status: "Public Record",
-    position: "Anggota DPR RI - Komisi III", // Data ini tampaknya hilang/kosong pada pejabat yang Anda lihat
-    party: "Partai Rakyat Adil",
-    summary: "Ringkasan jejak karir selama menjabat...", // Data ini tampaknya kosong pada pejabat yang Anda lihat
+    status: "Divonis 15 Tahun Penjara",
+    position: "Tersangka / Ketua DPR (pada periode e-KTP)",
+    party: "Partai Golongan Karya",
+    summary: "Terlibat dalam skandal korupsi proyek pengadaan KTP elektronik yang menyebabkan kerugian negara sekitar Rp 2,3 triliun.",
   },
   // ... Objek pejabat lainnya
 ];
