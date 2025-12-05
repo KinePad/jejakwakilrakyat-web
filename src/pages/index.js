@@ -2,8 +2,7 @@
 
 import Head from 'next/head';
 import Link from 'next/link'; 
-
-// Import semua komponen UI
+// Import komponen UI
 import OfficialCard from '../components/OfficialCard';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
@@ -12,7 +11,8 @@ import SearchBar from '../components/SearchBar'; // Diimpor
 // Import data statis
 import { officialsData } from '../data/officials';
 
-// Fungsi Next.js: Mengambil data saat proses BUILD (SSG)
+// ... (getStaticProps tetap sama)
+
 export async function getStaticProps() {
   const officials = officialsData;
 
@@ -34,13 +34,10 @@ export default function Home({ officials }) {
         <title>Semoga Tidak Lupa - Jejak Pejabat Arsip Publik</title>
       </Head>
 
-      {/* --- 1. Header --- */}
       <Header /> 
       
-      {/* --- 2. SearchBar --- */}
       <SearchBar />
       
-      {/* --- 3. Daftar Kartu Pejabat --- */}
       <main className="card-list">
         
         {!hasOfficials && (
@@ -51,17 +48,25 @@ export default function Home({ officials }) {
 
         {hasOfficials && officials.map((official) => (
           
+          // PERBAIKAN: Menggunakan Link modern tanpa legacyBehavior atau passHref,
+          // dan styling yang tegas.
           <Link 
             href={`/${official.id}`} 
-            key={official.id} 
-            style={{ display: 'block', textDecoration: 'none', color: 'inherit' }} 
+            key={`link-${official.id}`} // Memberi key pada Link
+            // Style yang memastikan Link adalah blok yang menutupi area card
+            style={{ 
+              display: 'block', 
+              textDecoration: 'none', 
+              color: 'inherit',
+              width: '400px', // Memberi lebar yang sedikit lebih besar dari OfficialCard (380px)
+              maxWidth: '100%',
+            }} 
           >
             <OfficialCard official={official} />
           </Link>
         ))}
       </main>
 
-      {/* --- 4. Footer --- */}
       <Footer />
       
       <style jsx>{`
