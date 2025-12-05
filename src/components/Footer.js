@@ -41,13 +41,13 @@ const Footer = () => {
 
       <div className="footer-content">
         <p className="footer-text">
-          &copy; {currentYear} JEJAK PEJABAT. All Rights Reserved.
+          &copy; {currentYear} Jejak Wakil Rakyat. All Rights Reserved.
         </p>
         <p className="footer-text">
-          Data generated using Static Site Generation (SSG) on Next.js.
+          Made with by Silo Kusuma
         </p>
         <p className="disclaimer">
-          **Disclaimer**: This is a static public data archive intended for educational reference only.
+          **Disclaimer**: This entire website is open source, and all data on this site is original as provided by reliable sources.
         </p>
       </div>
     </footer>
