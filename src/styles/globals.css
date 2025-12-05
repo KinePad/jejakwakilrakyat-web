@@ -1,0 +1,41 @@
+/* src/styles/globals.css */
+
+/* 1. Import Font ala Mesin Tik/Terminal (Roboto Mono) */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
+
+/* 2. CSS Reset Dasar dan Styling Body */
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+  /* Terapkan font di seluruh body */
+  font-family: 'Roboto Mono', monospace; 
+  background-color: #e9e9e9; /* Warna abu-abu terang */
+}
+
+/* 3. Efek Background Dot Grid (Sesuai Desain Anda) */
+body {
+  background-color: #e9e9e9;
+  /* Membuat pola titik-titik (dot grid) */
+  background-image: radial-gradient(#d3d3d3 1px, transparent 0);
+  background-size: 20px 20px;
+}
+
+/* 4. Global Link Style (digunakan di index.js) */
+/* Menghilangkan garis bawah pada Link */
+a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+/* 5. Styling untuk elemen yang umum */
+h1, h2, h3, h4, p {
+    margin-top: 0;
+}
+
+/* Pastikan semua elemen inherit box-sizing */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
