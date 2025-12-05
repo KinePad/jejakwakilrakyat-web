@@ -7,20 +7,25 @@ const OfficialCard = ({ official }) => {
       <style jsx>{`
         /* --- Kontainer Utama (Kotak Arsip) --- */
         .official-card {
-          /* Border Hitam Tebal */
-          border: 4px solid #1a1a1a; 
+          /* Border Biru Tua */
+          border: 4px solid #003366; 
           padding: 40px 30px;
           margin-bottom: 40px;
           background-color: #ffffff; 
           /* Efek Border 3D Tipis */
           box-shadow: 6px 6px 0px 0px #1a1a1a; 
           position: relative;
-          width: 380px; /* Lebar tetap */
-          height: 550px; /* Tinggi agar konsisten */
+          width: 380px; 
+          height: 550px; 
           display: flex;
           flex-direction: column;
           justify-content: space-between;
           font-family: 'Roboto Mono', monospace;
+          transition: transform 0.2s;
+        }
+
+        .official-card:hover {
+            transform: translateY(-5px); /* Efek hover kecil */
         }
 
         /* --- Header Top Left: PUBLIC DATA --- */
@@ -28,22 +33,22 @@ const OfficialCard = ({ official }) => {
             position: absolute;
             top: 0;
             left: 0;
-            background-color: #3a2cff;
+            background-color: #003366; /* Biru Tua */
             color: white;
             padding: 5px 10px;
             font-size: 0.8rem;
             letter-spacing: 1px;
         }
 
-        /* --- Stempel Merah: POLITICIAN DIRECTORY --- */
+        /* --- Stempel: POLITICIAN DIRECTORY --- */
         .stamp-container {
             margin-top: 20px;
             margin-bottom: 30px;
             text-align: center;
         }
         .stamp {
-          border: 3px solid red;
-          color: red;
+          border: 3px solid #007bff; /* Biru Terang */
+          color: #007bff; 
           padding: 8px 25px;
           font-weight: bold;
           display: inline-block;
@@ -83,10 +88,10 @@ const OfficialCard = ({ official }) => {
 
         /* --- Tombol OPEN FOLDER --- */
         .open-folder-btn {
-            background-color: #1a1a1a;
+            background-color: #007bff; /* Biru Terang */
             color: white;
             padding: 15px 30px;
-            border: 2px solid #1a1a1a;
+            border: 2px solid #007bff;
             cursor: pointer;
             width: 100%;
             font-size: 1rem;
@@ -96,10 +101,6 @@ const OfficialCard = ({ official }) => {
       `}</style>
       
       <div className="public-data-tag">PUBLIC DATA</div>
-
-      <div className="top-icons">
-          {/* Tambahkan ikon di sini jika perlu */}
-      </div>
 
       <div className="stamp-container">
           <div className="stamp">POLITICIAN DIRECTORY</div>
