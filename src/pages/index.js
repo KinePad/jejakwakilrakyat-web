@@ -1,21 +1,19 @@
 // src/pages/index.js
-
+import React from 'react'; 
 import Head from 'next/head';
 import Link from 'next/link'; 
-// Import komponen UI
+
+// IMPOR KOMPONEN (Harus Default Export)
 import OfficialCard from '../components/OfficialCard';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
-import SearchBar from '../components/SearchBar'; // Diimpor
+import SearchBar from '../components/SearchBar'; 
 
 // Import data statis
 import { officialsData } from '../data/officials';
 
-// ... (getStaticProps tetap sama)
-
 export async function getStaticProps() {
   const officials = officialsData;
-
   return {
     props: {
       officials: officials || [], 
@@ -23,7 +21,6 @@ export async function getStaticProps() {
   };
 }
 
-// Komponen Halaman Home
 export default function Home({ officials }) {
   
   const hasOfficials = Array.isArray(officials) && officials.length > 0;
@@ -35,7 +32,6 @@ export default function Home({ officials }) {
       </Head>
 
       <Header /> 
-      
       <SearchBar />
       
       <main className="card-list">
@@ -47,19 +43,16 @@ export default function Home({ officials }) {
         )}
 
         {hasOfficials && officials.map((official) => (
-          
-          // PERBAIKAN: Menggunakan Link modern tanpa legacyBehavior atau passHref,
-          // dan styling yang tegas.
           <Link 
             href={`/${official.id}`} 
-            key={`link-${official.id}`} // Memberi key pada Link
-            // Style yang memastikan Link adalah blok yang menutupi area card
+            key={`link-${official.id}`} 
             style={{ 
               display: 'block', 
               textDecoration: 'none', 
               color: 'inherit',
-              width: '400px', // Memberi lebar yang sedikit lebih besar dari OfficialCard (380px)
+              width: '400px',
               maxWidth: '100%',
+              margin: '0 15px 30px 15px', // Margin horizontal untuk centering card
             }} 
           >
             <OfficialCard official={official} />
@@ -78,19 +71,19 @@ export default function Home({ officials }) {
           flex-direction: column;
           align-items: center;
           min-height: 100vh; 
+          color: #ffffff;
         }
         .card-list {
           display: flex;
           flex-wrap: wrap;
-          gap: 30px;
+          gap: 0; 
           justify-content: center;
           width: 100%;
           margin-top: 40px;
         }
         .no-data-msg {
-            font-family: 'Roboto Mono', monospace;
-            color: red;
-            border: 1px dashed red;
+            color: #007bff;
+            border: 1px dashed #007bff;
             padding: 20px;
             text-align: center;
         }
