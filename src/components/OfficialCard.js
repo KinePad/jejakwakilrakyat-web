@@ -5,14 +5,14 @@ const OfficialCard = ({ official }) => {
   return (
     <div className="official-card">
       <style jsx>{`
-        /* --- Kontainer Utama (Kotak Arsip) --- */
+        /* --- Kontainer Utama (Kartu) --- */
         .official-card {
           /* Border Biru Tua */
           border: 4px solid #003366; 
           padding: 40px 30px;
           margin-bottom: 40px;
           background-color: #ffffff; 
-          /* Efek Border 3D Tipis */
+          /* Efek Shadow Hitam */
           box-shadow: 6px 6px 0px 0px #1a1a1a; 
           position: relative;
           width: 380px; 
@@ -26,6 +26,7 @@ const OfficialCard = ({ official }) => {
 
         .official-card:hover {
             transform: translateY(-5px); /* Efek hover kecil */
+            box-shadow: 8px 8px 0px 0px #1a1a1a; /* Efek shadow lebih dalam saat hover */
         }
 
         /* --- Header Top Left: PUBLIC DATA --- */
@@ -86,17 +87,17 @@ const OfficialCard = ({ official }) => {
             letter-spacing: 1px;
         }
 
-        /* --- Tombol OPEN FOLDER --- */
-        .open-folder-btn {
+        /* --- Pesan KLIK UNTUK MEMBUKA ARSIP (Menggantikan Tombol) --- */
+        .open-folder-msg {
             background-color: #007bff; /* Biru Terang */
             color: white;
             padding: 15px 30px;
-            border: 2px solid #007bff;
-            cursor: pointer;
-            width: 100%;
+            text-align: center;
             font-size: 1rem;
             letter-spacing: 2px;
             text-transform: uppercase;
+            margin-top: 15px; 
+            /* Catatan: Karena ini di dalam Link, seluruh area ini dapat diklik */
         }
       `}</style>
       
@@ -116,7 +117,8 @@ const OfficialCard = ({ official }) => {
         <p>STATUS: {official.status.toUpperCase()}</p>
       </div>
 
-      <button className="open-folder-btn">OPEN FOLDER →</button>
+      {/* --- Pesan yang aman diklik (menggantikan tombol) --- */}
+      <p className="open-folder-msg">KLIK UNTUK MEMBUKA ARSIP →</p>
     </div>
   );
 };
