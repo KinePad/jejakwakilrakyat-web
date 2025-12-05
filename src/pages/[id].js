@@ -1,131 +1,176 @@
 // src/pages/[id].js
+
 import Head from 'next/head';
 import Link from 'next/link';
 import Footer from '../components/Footer';
 import { officialsData } from '../data/officials';
+import { useRouter } from 'next/router';
 
-// 1. getStaticPaths: Menentukan path (URL) mana saja yang harus di-build
+// 1. Get all possible paths (for SSG)
 export async function getStaticPaths() {
   const paths = officialsData.map((official) => ({
-    params: { id: String(official.id) }, // id harus berupa string
+    params: { id: official.id.toString() },
   }));
 
-  return { paths, fallback: false }; // fallback: false berarti semua path harus didefinisikan di sini
+  return { paths, fallback: false };
 }
 
-// 2. getStaticProps: Mengambil data untuk path/halaman yang spesifik
+// 2. Get specific data for the page (for SSG)
 export async function getStaticProps({ params }) {
-  const official = officialsData.find(o => String(o.id) === params.id);
+  const official = officialsData.find((o) => o.id.toString() === params.id);
 
   if (!official) {
     return { notFound: true };
   }
 
   return {
-    props: {
-      official,
-    },
+    props: { official },
   };
 }
 
-// 3. Komponen Halaman Detail
+// 3. Detail Component
 export default function OfficialDetail({ official }) {
-  return (
-    <div className="detail-container">
-      <Head>
-        <title>RECORD: {official.name} - Jejak Pejabat</title>
-      </Head>
+    const router = useRouter();
 
-      <div className="detail-box">
-        <h1 className="name-title">{official.name}</h1>
-        <h2 className="pos-title">{official.title}</h2>
-        
-        <hr className="divider" />
+    if (router.isFallback) {
+        return <div>Loading...</div>; // Tampilkan ini saat fallback
+    }
 
-        <div className="info-grid">
-          <div className="info-item">
-            <strong>ID CASE:</strong> #{String(official.id).padStart(3, '0')}
-          </div>
-          <div className="info-item">
-            <strong>CATEGORY:</strong> {official.category.toUpperCase()}
-          </div>
-          <div className="info-item">
-            <strong>PARTY:</strong> {official.details.party}
-          </div>
-          <div className="info-item">
-            <strong>BORN:</strong> {official.details.birth}
-          </div>
+    return (
+        <div className="container">
+            <Head>
+                <title>{official.name} - {official.category}</title>
+            </Head>
+
+            <main className="detail-container">
+                <style jsx>{`
+                    /* Detail Container Putih di atas Background Hitam */
+                    .detail-container {
+                        max-width: 900px;
+                        width: 100%;
+                        background-color: #ffffff; 
+                        padding: 50px;
+                        margin: 60px auto;
+                        border: 4px solid #003366; /* Border Biru Tua */
+                        box-shadow: 8px 8px 0px 0px #007bff; /* Shadow Biru */
+                        color: #1a1a1a; /* Teks Hitam di dalam Putih */
+                    }
+
+                    /* Judul Utama */
+                    h1 {
+                        font-size: 2.2rem;
+                        font-weight: 700;
+                        margin-bottom: 5px;
+                        color: #003366; /* Judul Biru Tua */
+                        letter-spacing: 1px;
+                    }
+
+                    /* Subtitle/Category */
+                    h2 {
+                        font-size: 1.2rem;
+                        font-weight: 400;
+                        margin-bottom: 40px;
+                        border-bottom: 2px solid #ddd;
+                        padding-bottom: 10px;
+                        color: #555;
+                    }
+
+                    /* Garis Pemisah */
+                    .divider {
+                        border: none;
+                        border-top: 2px dashed #ccc;
+                        margin: 20px 0;
+                    }
+
+                    /* Daftar Detail */
+                    .detail-list {
+                        margin-top: 30px;
+                    }
+                    .detail-item {
+                        margin-bottom: 20px;
+                    }
+                    .label {
+                        font-weight: 700;
+                        color: #007bff; /* Label Biru Terang */
+                        text-transform: uppercase;
+                        display: block;
+                        margin-bottom: 5px;
+                        border-bottom: 1px dotted #ccc;
+                        padding-bottom: 2px;
+                        font-size: 0.9rem;
+                    }
+                    .value {
+                        font-size: 1.1rem;
+                        line-height: 1.4;
+                    }
+
+                    /* Link Kembali */
+                    .back-link {
+                        display: inline-block;
+                        margin-top: 40px;
+                        color: #007bff; /* Link Biru Terang */
+                        text-decoration: none;
+                        font-weight: 700;
+                        letter-spacing: 1px;
+                        border-bottom: 2px solid transparent;
+                        transition: border-bottom 0.2s;
+                    }
+                    .back-link:hover {
+                        border-bottom: 2px solid #007bff;
+                    }
+                `}</style>
+
+                <h1>{official.name || 'Nama Pejabat Tidak Ditemukan'}</h1>
+                <h2>{official.category || 'Kategori Tidak Diketahui'}</h2>
+
+                <hr className="divider" />
+                
+                <div className="detail-list">
+                    
+                    <div className="detail-item">
+                        <span className="label">Status Arsip</span>
+                        <p className="value">{official.status || '-'}</p>
+                    </div>
+                    
+                    <div className="detail-item">
+                        <span className="label">Jabatan Terakhir</span>
+                        <p className="value">{official.position || '-'}</p>
+                    </div>
+
+                    <div className="detail-item">
+                        <span className="label">Partai Politik</span>
+                        <p className="value">{official.party || '-'}</p>
+                    </div>
+                    
+                    <div className="detail-item">
+                        <span className="label">Ringkasan Jejak Karir</span>
+                        <p className="value">{official.summary || 'Ringkasan data belum tersedia.'}</p>
+                    </div>
+
+                </div>
+
+                <Link href="/" passHref legacyBehavior>
+                    <a className="back-link">← BACK TO ARCHIVE INDEX</a>
+                </Link>
+
+            </main>
+
+            <Footer /> 
+            
+            {/* Global style container untuk halaman detail */}
+            <style jsx global>{`
+                .container {
+                    padding-bottom: 0; 
+                    min-height: 100vh;
+                    display: flex;
+                    flex-direction: column;
+                }
+                /* Mengubah warna footer agar terlihat di background hitam */
+                footer {
+                    margin-top: auto; 
+                    color: #999; 
+                }
+            `}</style>
         </div>
-
-        <h3 className="track-title">:: TRACK RECORD ARSIP ::</h3>
-        <ul className="track-list">
-          {official.details.trackRecord.map((record, index) => (
-            <li key={index}>{record}</li>
-          ))}
-        </ul>
-
-        <Link href="/" passHref className="back-link">
-          ← BACK TO ARCHIVE INDEX
-        </Link>
-      </div>
-
-      <Footer />
-
-      <style jsx>{`
-        /* Styling disederhanakan, Anda bisa menambahkan efek dokumen di sini */
-        .detail-container {
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 0 20px;
-            font-family: 'Roboto Mono', monospace;
-        }
-        .detail-box {
-            border: 3px solid #1a1a1a;
-            padding: 40px;
-            background-color: #fff;
-            box-shadow: 8px 8px 0px 0px #aaa;
-        }
-        .name-title {
-            font-size: 2.2rem;
-            margin-bottom: 5px;
-        }
-        .pos-title {
-            font-size: 1.2rem;
-            color: #555;
-            margin-top: 0;
-        }
-        .divider {
-            border: none;
-            border-top: 2px solid #ccc;
-            margin: 20px 0;
-        }
-        .info-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-        .track-title {
-            font-size: 1.1rem;
-            border-bottom: 1px dashed #333;
-            padding-bottom: 5px;
-            margin-top: 40px;
-        }
-        .track-list {
-            list-style: none;
-            padding: 0;
-        }
-        .track-list li {
-            margin-bottom: 10px;
-            line-height: 1.4;
-        }
-        .back-link {
-            display: inline-block;
-            margin-top: 40px;
-            font-weight: bold;
-            color: #1a1a1a;
-        }
-      `}</style>
-    </div>
-  );
+    );
 }
