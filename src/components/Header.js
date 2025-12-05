@@ -1,53 +1,31 @@
 // src/components/Header.js
-import React from 'react';
-
-const Header = () => {
-  const currentYear = new Date().getFullYear();
-
-  return (
-    <header className="main-header-design">
+// ... (kode import dan komponen)
       <style jsx>{`
-        /* --- Kontainer Utama Header --- */
-        .main-header-design {
-          text-align: center;
-          margin: 60px 0 30px 0; /* Margin atas dan bawah disesuaikan */
-          padding: 20px 0;
-          width: 100%;
-          max-width: 900px;
-        }
+        /* ... style kontainer tetap ... */
 
         /* --- EST. 2025 Box --- */
         .est-box {
-          display: inline-block;
-          border: 2px solid #1a1a1a;
+          /* Border Hitam di atas Background Hitam, jadi kita pakai Putih atau Biru */
+          border: 2px solid #007bff; /* Aksen Biru */
           padding: 5px 15px;
           margin-bottom: 20px;
           font-size: 0.9rem;
           font-family: 'Roboto Mono', monospace;
           font-weight: bold;
+          color: #ffffff; /* Teks Putih agar terlihat di background Hitam */
         }
 
         /* --- SEMOGA TIDAK LUPA Text --- */
         .main-title {
-          font-size: 8vw; 
-          line-height: 0.85; 
-          font-weight: 900; 
-          color: #1a1a1a;
+          /* ... ukuran font tetap ... */
+          color: #ffffff; /* Teks Utama Putih */
           text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1); 
         }
 
-        @media (min-width: 900px) {
-          .main-title {
-            font-size: 72px; 
-          }
-        }
-        
         /* --- Subtitle: AGAR YANG PENTING TETAP DIINGAT --- */
         .subtitle {
-          font-family: 'Roboto Mono', monospace;
-          font-size: 1rem;
-          margin-top: 30px;
-          color: #333;
+          /* ... ukuran font tetap ... */
+          color: #007bff; /* Subtitle Biru */
           letter-spacing: 2px;
         }
 
@@ -55,27 +33,9 @@ const Header = () => {
         .separator {
           width: 30%;
           border: none;
-          border-bottom: 4px solid #1a1a1a;
+          border-bottom: 4px solid #007bff; /* Garis Biru */
           margin: 20px auto 0 auto;
         }
       `}</style>
       
-      <div className="est-box">
-        EST. {currentYear > 2025 ? currentYear : 2025}
-      </div>
-
-      <h1 className="main-title">
-        SEMOGA<br />
-        TIDAK LUPA
-      </h1>
-
-      <p className="subtitle">
-        AGAR YANG PENTING TETAP DIINGAT
-      </p>
-
-      <hr className="separator" />
-    </header>
-  );
-};
-
-export default Header;
+      {/* ... kode elemen HTML tetap ... */}
