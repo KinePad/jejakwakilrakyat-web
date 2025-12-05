@@ -1,34 +1,28 @@
 /* src/styles/globals.css */
-
-/* Import Font (Tetap Roboto Mono) */
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
 
-/* 2. CSS Reset Dasar dan Styling Body */
 body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Roboto Mono', monospace; 
-  background-color: #1a1a1a; /* GANTI: Background Hitam */
-  color: #ffffff; /* GANTI: Warna teks default menjadi Putih */
+  background-color: #1a1a1a; /* Background Hitam */
+  color: #ffffff; /* Teks Default Putih */
 }
 
-/* 3. Efek Background Dot Grid (Putih Transparan di atas Hitam) */
 body {
   background-color: #1a1a1a;
-  /* Dot Grid Putih Transparan */
+  /* Dot Grid Putih Transparan di atas Hitam */
   background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 0); 
   background-size: 20px 20px;
 }
 
-/* 4. Global Link Style */
+/* Link Style */
 a {
     text-decoration: none;
-    color: #007bff; /* Link berwarna Biru Terang */
+    color: #007bff; /* Link Biru Terang */
     cursor: pointer;
 }
-
-/* 5. Global element reset */
 h1, h2, h3, h4, p {
     margin-top: 0;
 }
