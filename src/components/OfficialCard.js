@@ -28,7 +28,7 @@ const OfficialCard = ({ official }) => {
             position: absolute;
             top: 0;
             left: 0;
-            background-color: #1a1a1a;
+            background-color: #3a2cff;
             color: white;
             padding: 5px 10px;
             font-size: 0.8rem;
