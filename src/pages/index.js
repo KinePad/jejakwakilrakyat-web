@@ -3,32 +3,29 @@
 import Head from 'next/head';
 import Link from 'next/link'; 
 
-// Import komponen UI dari folder components
+// Import semua komponen UI
 import OfficialCard from '../components/OfficialCard';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
+import SearchBar from '../components/SearchBar'; // Diimpor
 
-// Import data statis dari folder data
+// Import data statis
 import { officialsData } from '../data/officials';
 
 // Fungsi Next.js: Mengambil data saat proses BUILD (SSG)
 export async function getStaticProps() {
-  // Ambil data
   const officials = officialsData;
 
   return {
     props: {
-      // Pastikan 'officials' selalu berupa array (fallback jika data kosong)
       officials: officials || [], 
     },
-    // Optional: atur revalidate jika ingin menggunakan ISR
   };
 }
 
 // Komponen Halaman Home
 export default function Home({ officials }) {
   
-  // Pengecekan data untuk mencegah error map
   const hasOfficials = Array.isArray(officials) && officials.length > 0;
   
   return (
@@ -37,26 +34,26 @@ export default function Home({ officials }) {
         <title>Semoga Tidak Lupa - Jejak Pejabat Arsip Publik</title>
       </Head>
 
-      {/* --- Header Desain 'Semoga Tidak Lupa' --- */}
+      {/* --- 1. Header --- */}
       <Header /> 
       
+      {/* --- 2. SearchBar --- */}
+      <SearchBar />
+      
+      {/* --- 3. Daftar Kartu Pejabat --- */}
       <main className="card-list">
         
-        {/* Pesan jika data kosong */}
         {!hasOfficials && (
             <p className="no-data-msg">
                 [SYSTEM MESSAGE] Data Arsip Pejabat kosong atau tidak ditemukan.
             </p>
         )}
 
-        {/* Pemetaan Data dan Navigasi */}
         {hasOfficials && officials.map((official) => (
           
-          // KRITIS: Menggunakan Link yang membungkus OfficialCard
           <Link 
-            href={`/${official.id}`} // Tujuannya adalah halaman detail [id].js
+            href={`/${official.id}`} 
             key={official.id} 
-            // Style agar Link berperilaku seperti block dan mengisi area card
             style={{ display: 'block', textDecoration: 'none', color: 'inherit' }} 
           >
             <OfficialCard official={official} />
@@ -64,9 +61,9 @@ export default function Home({ officials }) {
         ))}
       </main>
 
+      {/* --- 4. Footer --- */}
       <Footer />
       
-      {/* Style CSS Komponen */}
       <style jsx>{`
         .container {
           max-width: 1200px;
